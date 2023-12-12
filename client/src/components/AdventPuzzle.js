@@ -1,13 +1,26 @@
 import React from 'react';
 import { AdventData } from '../data/AdventData';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Image from 'react-bootstrap/Image';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import starGray from '../grayStar.png';
+import starYellow from '../yellowStar.png';
 
 const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
+	const statusArray = [
+		'Complete',
+		'Not Started',
+		'Pending',
+		'In Progress',
+		'Created',
+	];
 	return (
 		<div
 			style={{
 				height: '100%',
 				width: '100%',
 				padding: 20,
+				position: 'relative',
 			}}
 		>
 			{AdventData.filter((a, b) => {
@@ -15,12 +28,27 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 			}).map((a, b) => {
 				return (
 					<div
-						key={b}
 						style={{
 							width: '100%',
 							height: '100%',
 						}}
 					>
+						<div
+							style={{
+								position: 'absolute',
+								top: 0,
+								right: 0,
+								height: 150,
+								padding: 50,
+							}}
+						>
+							<Image
+								style={{
+									height: '100%',
+								}}
+								src={a.status === 'Complete' ? starYellow : starGray}
+							></Image>
+						</div>
 						<div
 							style={{
 								width: '100%',
@@ -47,10 +75,32 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 								<p
 									style={{
 										marginLeft: 10,
+										display: 'flex',
 									}}
 								>
 									<strong>{`Status : `}</strong>
-									{a.status}
+									<DropdownButton
+										eventKey='1'
+										size='sm'
+										style={{
+											marginLeft: 10,
+										}}
+										variant='success'
+										title={a.status}
+									>
+										{statusArray
+											.filter((sa, ix) => {
+												return sa !== a.status;
+											})
+											.sort((a, b) => a > b)
+											.map((sa, ix) => {
+												return (
+													<Dropdown.Item key={ix} eventKey={ix + 2}>
+														{sa}
+													</Dropdown.Item>
+												);
+											})}
+									</DropdownButton>
 								</p>
 							</div>
 							<p>
