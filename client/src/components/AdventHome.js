@@ -28,93 +28,119 @@ const AdventHome = ({ selectedPuzzle, setSelectedPuzzle }) => {
 				height: '100%',
 				width: '100%',
 				padding: 20,
-				display: 'flex',
-				flexWrap: 'wrap',
+				fontSize: 24,
 			}}
 		>
-			{[...Array(25)].map((_, i) => {
-				const day = i + 1;
-				const puzzle = AdventData.find((a) => a.year === 2023 && a.day === day);
-				const status = puzzle?.status || 'Not Started';
-				const finalTitle = puzzle?.title ? `"${puzzle.title}"` : 'Unknown';
-				if (status !== 'Not Started' && puzzle) {
-					puzzle.link = `https://adventofcode.com/${puzzle?.year}/day/${day}`;
-				}
+			<p
+				style={{
+					marginLeft: 25,
+				}}
+			>
+				<strong>{`Year: `}</strong>2023
+			</p>
+			<div
+				style={{
+					height: '100%',
+					width: '100%',
 
-				return (
-					<div
-						key={i}
-						style={{
-							height: 150,
-							width: 150,
-							padding: 10,
-						}}
-					>
+					display: 'flex',
+					flexWrap: 'wrap',
+				}}
+			>
+				{[...Array(25)].map((_, i) => {
+					const day = i + 1;
+					const puzzle = AdventData.find(
+						(a) => a.year === 2023 && a.day === day
+					);
+					const status = puzzle?.status || 'Not Started';
+					const finalTitle = puzzle?.title ? `"${puzzle.title}"` : 'Unknown';
+					if (status !== 'Not Started' && puzzle) {
+						puzzle.link = `https://adventofcode.com/${puzzle?.year}/day/${day}`;
+					}
+
+					return (
 						<div
+							key={i}
 							style={{
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								height: '100%',
-								width: '100%',
-								borderRadius: 15,
-								background: ColorPicker(status),
-								color: status !== 'Not Started' ? '#fff' : '#cab1bd',
-								cursor: status !== 'Not Started' ? 'pointer' : 'default',
-								position: 'relative',
-							}}
-							onClick={() => {
-								if (status !== 'Not Started') {
-									setSelectedPuzzle([2023, day]);
-									navigate('/advent/puzzle');
-								}
+								height: 150,
+								width: 150,
+								padding: 10,
 							}}
 						>
-							<p
-								style={{
-									fontSize: 10,
-									position: 'absolute',
-									top: 1,
-									right: 8,
-								}}
-							>
-								{status}
-							</p>
 							<div
 								style={{
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									height: '100%',
 									width: '100%',
+									borderRadius: 15,
+									background: ColorPicker(status),
+									color: status !== 'Not Started' ? '#fff' : '#cab1bd',
+									cursor: status !== 'Not Started' ? 'pointer' : 'default',
+									position: 'relative',
+								}}
+								onClick={() => {
+									if (status !== 'Not Started') {
+										setSelectedPuzzle([2023, day]);
+										navigate('/advent/puzzle');
+									}
 								}}
 							>
-								<div
+								<p
 									style={{
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
+										fontSize: 10,
+										position: 'absolute',
+										top: 1,
+										right: 8,
 									}}
 								>
-									<p
+									{status}
+								</p>
+								<div
+									style={{
+										width: '100%',
+									}}
+								>
+									<div
 										style={{
-											fontSize: 24,
+											display: 'flex',
+											justifyContent: 'center',
+											alignItems: 'center',
 										}}
 									>
-										<strong>{`Day ${day}`}</strong>
-									</p>
-								</div>
-								<div
-									style={{
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
-										fontSize: 12,
-									}}
-								>
-									<p>{finalTitle}</p>
+										<p
+											style={{
+												fontSize: 24,
+											}}
+										>
+											<strong>{`Day ${day}`}</strong>
+										</p>
+									</div>
+									<div
+										style={{
+											display: 'flex',
+											justifyContent: 'center',
+											alignItems: 'center',
+											fontSize: 12,
+										}}
+									>
+										<p
+											style={{
+												display: 'flex',
+												justifyContent: 'center',
+												textAlign: 'center',
+											}}
+										>
+											{finalTitle}
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				);
-			})}
+					);
+				})}
+			</div>
 		</div>
 	);
 };

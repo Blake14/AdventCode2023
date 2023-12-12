@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AdventData } from '../data/AdventData';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Image from 'react-bootstrap/Image';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import starGray from '../grayStar.png';
 import starYellow from '../yellowStar.png';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
+	const [showResult, setShowResult] = useState(false);
 	const statusArray = [
 		'Complete',
 		'Not Started',
@@ -60,54 +63,106 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 									display: 'flex',
 								}}
 							>
-								<p>
-									<strong>{`Year : `}</strong>
-									{a.year}
-								</p>
-								<p
+								<div
 									style={{
-										marginLeft: 10,
-									}}
-								>
-									<strong>{`Day : `}</strong>
-									{a.day}
-								</p>
-								<p
-									style={{
-										marginLeft: 10,
 										display: 'flex',
 									}}
 								>
-									<strong>{`Status : `}</strong>
-									<DropdownButton
-										eventKey='1'
-										size='sm'
+									<p>
+										<strong>{`Year : `}</strong>
+										{a.year}
+									</p>
+									<p
 										style={{
 											marginLeft: 10,
 										}}
-										variant='success'
-										title={a.status}
 									>
-										{statusArray
-											.filter((sa, ix) => {
-												return sa !== a.status;
-											})
-											.sort((a, b) => a > b)
-											.map((sa, ix) => {
-												return (
-													<Dropdown.Item key={ix} eventKey={ix + 2}>
-														{sa}
-													</Dropdown.Item>
-												);
-											})}
-									</DropdownButton>
-								</p>
+										<strong>{`Day : `}</strong>
+										{a.day}
+									</p>
+									<p
+										style={{
+											marginLeft: 10,
+											display: 'flex',
+										}}
+									>
+										<strong>{`Status : `}</strong>
+										<DropdownButton
+											eventKey='1'
+											size='sm'
+											style={{
+												marginLeft: 10,
+											}}
+											variant='success'
+											title={a.status}
+										>
+											{statusArray
+												.filter((sa, ix) => {
+													return sa !== a.status;
+												})
+												.sort((a, b) => a > b)
+												.map((sa, ix) => {
+													return (
+														<Dropdown.Item key={ix} eventKey={ix + 2}>
+															{sa}
+														</Dropdown.Item>
+													);
+												})}
+										</DropdownButton>
+									</p>
+								</div>
+								<div>
+									<InputGroup
+										className='mb-3'
+										style={{
+											marginLeft: 50,
+										}}
+									>
+										<InputGroup.Checkbox
+											checked={showResult}
+											onChange={() => setShowResult(!showResult)}
+											disabled={
+												a.status === 'Created' || a.status === 'Not Started'
+											}
+										/>
+										<Form.Control
+											type='text'
+											value={
+												showResult &&
+												a.status !== 'Created' &&
+												a.status !== 'Not Started'
+													? a.answers[0]
+													: ''
+											}
+											disabled={!showResult && a.status !== 'Complete'}
+											placeholder={
+												a.status !== 'Created' && a.status !== 'Not Started'
+													? '<- Unhide My Answer'
+													: 'Not Yet Attempted'
+											}
+											aria-label='Text input with checkbox'
+										/>
+									</InputGroup>
+								</div>
 							</div>
 							<p>
 								<strong>{`Link : `}</strong>
 								<a href={a.link} target='_blank' rel='noopener noreferrer'>
 									{a.link}
 								</a>
+							</p>
+							<p>
+								<strong>{`See Code : `}</strong>
+								<a
+									href={'www.github.com/blake14'}
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									GitHub Link
+								</a>
+							</p>
+							<p>
+								<strong>{`Component (if applicable) : `}</strong>
 							</p>
 							<div
 								style={{
