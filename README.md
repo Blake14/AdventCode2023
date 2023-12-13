@@ -1,4 +1,4 @@
-![My Portfolio Logo](../logo.png)
+![My Portfolio Logo](./logo.png)
 Welcome to My Portfolio App! This application is designed to showcase my various projects, including development work, Blender projects, programming challenges, and more. Friends and family can explore my work, leave comments, and keep up with my latest projects.
 
 ## Features
