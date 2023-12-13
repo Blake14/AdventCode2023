@@ -11,7 +11,8 @@ import Footer from './components/Footer';
 import Project from './components/projects/Project';
 
 const App = () => {
-	document.body.style.background = '#E0DDCF';
+	const [bgColor, setBgColor] = useState('#E0DDCF');
+	document.body.style.background = bgColor;
 	document.body.style.color = '#2D232E';
 	const [selectedPuzzle, setSelectedPuzzle] = useState([2023, 11]);
 	const [selectedProject, setSelectedProject] = useState(0);
@@ -66,7 +67,7 @@ const App = () => {
 						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 				</div>
-				<Footer />
+				<Footer setBgColor={setBgColor} />
 			</div>
 		</Router>
 	);
