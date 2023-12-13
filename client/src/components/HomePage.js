@@ -1,7 +1,5 @@
 import React from 'react';
-import aocImage from '../aocImage.png';
 import { useNavigate } from 'react-router-dom';
-import Badge from 'react-bootstrap/Badge';
 import { HomeData } from '../data/HomeData';
 
 const HomePage = () => {
@@ -31,7 +29,7 @@ const HomePage = () => {
 				padding: 20,
 				display: 'flex',
 				flexWrap: 'wrap',
-				justifyContent: 'left',
+				justifyContent: 'space-evenly',
 				fontSize: 55,
 				color: '#fff',
 				fontVariant: 'all-petite-caps',
@@ -46,7 +44,7 @@ const HomePage = () => {
 							height: 200,
 							width: 400,
 							borderRadius: 15,
-							backgroundColor: GetRandColor(),
+							backgroundColor: '#212529',
 							backgroundImage: `url(https://source.unsplash.com/800x400/?${link.bgImageSearchString})`,
 							backgroundSize: 'cover', // Ensures the background image covers the entire container
 							backgroundRepeat: 'no-repeat',
@@ -57,6 +55,9 @@ const HomePage = () => {
 							alignItems: 'center',
 							margin: 20,
 							color: '#fff', // Text color to ensure visibility on the background
+							textShadow: '2px 2px 2px black',
+							boxShadow:
+								'0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23)', //box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 						}}
 						onClick={() => {
 							navigate(link.link);

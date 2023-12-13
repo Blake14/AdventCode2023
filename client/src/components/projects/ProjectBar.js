@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { ProjectData } from '../../data/ProjectData';
+import SuggestionPane from '../SuggestionPane';
+import ProjectModule from './ProjectModule';
 
-const ProjectBar = ({ language }) => {
+const ProjectBar = ({ language, setSelectedProject, selectedProject }) => {
 	const [showCategory, setShowCategory] = useState(true);
-	const randomProjectCnt = Math.floor(Math.random() * (10 - 1 + 1) + 1);
 	return (
 		<div style={{ marginBottom: 50 }}>
 			<div style={{ height: 20, position: 'relative' }}>
@@ -28,19 +30,7 @@ const ProjectBar = ({ language }) => {
 					>
 						{showCategory ? <MdExpandLess /> : <MdExpandMore />} {language}
 					</div>
-					<div>
-						<p
-							style={{
-								marginTop: 15,
-								marginLeft: 20,
-								fontSize: 10,
-								color: '#4a4e69',
-								cursor: 'pointer',
-							}}
-						>
-							Suggest a Project?
-						</p>
-					</div>
+					<SuggestionPane language={language} />
 				</div>
 			</div>
 
@@ -56,37 +46,20 @@ const ProjectBar = ({ language }) => {
 						paddingBottom: 30,
 					}}
 				>
-					{[...Array(randomProjectCnt)].map((block, index) => {
+					{ProjectData.filter((block, index) => {
+						return block.category === language;
+					}).map((block, index) => {
+						const specificProjIndex = ProjectData.findIndex(
+							(p) => p.shortDesc === block.shortDesc
+						);
+
 						return (
-							<div
+							<ProjectModule
 								key={index}
-								style={{
-									minHeight: 250,
-									minWidth: 200,
-									background: '#fff',
-									marginRight: 15,
-									borderRadius: 15,
-									display: 'flex',
-									justifyContent: 'center',
-									alignItems: 'center',
-								}}
-							>
-								<p
-									style={{
-										width: '100%',
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
-										fontSize: 18,
-										color: '#ced4da',
-									}}
-								>
-									{`
-                  Project Not
-                  Found
-                  `}
-								</p>
-							</div>
+								specificProjIndex={specificProjIndex}
+								block={block}
+								setSelectedProject={setSelectedProject}
+							/>
 						);
 					})}
 				</div>
