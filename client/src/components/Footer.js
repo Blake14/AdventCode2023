@@ -1,12 +1,13 @@
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import ColorCommand from './ColorCommand';
 
-const Footer = () => {
+const Footer = ({ setBgColor }) => {
 	return (
 		<div
 			style={{
 				width: '100%',
-				height: 65,
+				height: 100,
 				fontSize: 32,
 				display: 'flex',
 				justifyContent: 'space-evenly',
@@ -21,8 +22,17 @@ const Footer = () => {
 					alignItems: 'center',
 				}}
 			>
-				<FaGithub />
-				<FaLinkedin />
+				<ColorCommand setBgColor={setBgColor} />
+				<FaGithub
+					style={{
+						minWidth: 200,
+					}}
+				/>
+				<FaLinkedin
+					style={{
+						minWidth: 200,
+					}}
+				/>
 			</div>
 		</div>
 	);
