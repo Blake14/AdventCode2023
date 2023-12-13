@@ -1,5 +1,4 @@
-![My Portfolio Logo](./logo.png)
-
+![My Portfolio Logo](../logo.png)
 Welcome to My Portfolio App! This application is designed to showcase my various projects, including development work, Blender projects, programming challenges, and more. Friends and family can explore my work, leave comments, and keep up with my latest projects.
 
 ## Features
@@ -17,9 +16,9 @@ Welcome to My Portfolio App! This application is designed to showcase my various
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/Blake14/McPortfolio
-   ```
+```bash
+git clone https://github.com/Blake14/McPortfolio
+```
 
 2. Navigate to the project directory:
 
@@ -33,13 +32,23 @@ cd ./client
 npm install
 ```
 
+-or-
+
+```bash
+yarn install
+```
+
 4. Start the development server:
 
 ```bash
 npm start
 ```
 
-5. Open your browser and visit http://localhost:3000 to view your portfolio app.
+-or-
+
+```bash
+yarn start
+```
 
 ### Contributing
 
