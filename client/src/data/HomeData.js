@@ -1,0 +1,51 @@
+export const HomeData = [
+	{
+		title: `Suggest a Project`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'data-stream',
+		link: '/',
+		order: 40,
+	},
+	{
+		title: `Favorite Projects`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'computer-build',
+		link: '/',
+		order: 30,
+	},
+	{
+		title: `Recent Projects`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'code-projects',
+		link: '/',
+		order: 20,
+	},
+	{
+		title: `Advent Code 2023`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'christmas-fun',
+		link: '/advent',
+		order: 1,
+	},
+	{
+		title: `Challenge Me`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'developer',
+		link: '/',
+		order: 50,
+	},
+	{
+		title: `Give Feedback`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'job-feedback',
+		link: '/',
+		order: 60,
+	},
+	{
+		title: `See Resume`,
+		bgColor: '#05668d',
+		bgImageSearchString: 'resume-paper-interview',
+		link: '/',
+		order: 70,
+	},
+];
