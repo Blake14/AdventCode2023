@@ -13,6 +13,7 @@ const NotFoundPage = () => {
 				width: '100%',
 				fontSize: 80,
 				color: '#212529',
+				marginTop: 75,
 			}}
 		>
 			<Image src={FourOhFour}></Image>

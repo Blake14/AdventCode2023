@@ -28,7 +28,14 @@ const Navigation = ({ NavHeight }) => {
 						src={logo}
 					></Image>
 				</Navbar.Brand>
-				<Nav className='me-auto'>
+				<Nav
+					className='me-auto'
+					style={{
+						width: 600,
+						display: 'flex',
+						justifyContent: 'space-evenly',
+					}}
+				>
 					{LinkData.map((link, index) => {
 						if (link.subLinks.length === 0) {
 							return (
