@@ -62,8 +62,8 @@ const AdventHome = ({ selectedPuzzle, setSelectedPuzzle }) => {
 						<div
 							key={i}
 							style={{
-								height: 150,
-								width: 150,
+								height: 225,
+								width: 225,
 								padding: 10,
 							}}
 						>
@@ -79,6 +79,7 @@ const AdventHome = ({ selectedPuzzle, setSelectedPuzzle }) => {
 									color: status !== 'Not Started' ? '#fff' : '#cab1bd',
 									cursor: status !== 'Not Started' ? 'pointer' : 'default',
 									position: 'relative',
+									userSelect: 'none',
 								}}
 								onClick={() => {
 									if (status !== 'Not Started') {
@@ -122,7 +123,7 @@ const AdventHome = ({ selectedPuzzle, setSelectedPuzzle }) => {
 											display: 'flex',
 											justifyContent: 'center',
 											alignItems: 'center',
-											fontSize: 12,
+											fontSize: 16,
 										}}
 									>
 										<p

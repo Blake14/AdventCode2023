@@ -40,12 +40,12 @@ To begin, get your puzzle input.
 	{
 		year: 2023,
 		day: 2,
-		status: 'Created',
+		status: 'Complete',
 		won: false,
 		hidden: false,
 		title: `Cube Conundrum`,
 		referenceFiles: [],
-		answers: [],
+		answers: [8],
 		link: '',
 		comments: [],
 		mainText: `You're launched high into the atmosphere! The apex of your trajectory just barely reaches the surface of a large island floating in the sky. You gently land in a fluffy pile of leaves. It's quite cold, but you don't see much snow. An Elf runs over to greet you.

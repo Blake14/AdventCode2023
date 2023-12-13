@@ -7,6 +7,8 @@ import starGray from '../grayStar.png';
 import starYellow from '../yellowStar.png';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import CommentSection from './CommentSection';
+import { GoCheckCircleFill, GoXCircleFill } from 'react-icons/go';
 
 const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 	const [showResult, setShowResult] = useState(false);
@@ -93,7 +95,7 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 											style={{
 												marginLeft: 10,
 											}}
-											variant='success'
+											variant='outline-success'
 											title={a.status}
 										>
 											{statusArray
@@ -103,7 +105,7 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 												.sort((a, b) => a > b)
 												.map((sa, ix) => {
 													return (
-														<Dropdown.Item key={ix} eventKey={ix + 2}>
+														<Dropdown.Item size='sm' key={ix} eventKey={ix + 2}>
 															{sa}
 														</Dropdown.Item>
 													);
@@ -111,7 +113,11 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 										</DropdownButton>
 									</p>
 								</div>
-								<div>
+								<div
+									style={{
+										display: 'flex',
+									}}
+								>
 									<InputGroup
 										className='mb-3'
 										style={{
@@ -134,7 +140,7 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 													? a.answers[0]
 													: ''
 											}
-											disabled={!showResult && a.status !== 'Complete'}
+											disabled={!showResult}
 											placeholder={
 												a.status !== 'Created' && a.status !== 'Not Started'
 													? '<- Unhide My Answer'
@@ -143,6 +149,20 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 											aria-label='Text input with checkbox'
 										/>
 									</InputGroup>
+									<div
+										style={{
+											fontSize: 30,
+											marginTop: -8,
+											marginLeft: 10,
+											color: a.status !== 'Complete' ? '#a4161a' : '#2c6e49',
+										}}
+									>
+										{a.status !== 'Complete' ? (
+											<GoXCircleFill />
+										) : (
+											<GoCheckCircleFill />
+										)}
+									</div>
 								</div>
 							</div>
 							<p>
@@ -191,6 +211,13 @@ const AdventPuzzle = ({ selectedPuzzle, setSelectedPuzzle }) => {
 					</div>
 				);
 			})}
+			<div
+				style={{
+					padding: 20,
+				}}
+			>
+				<CommentSection />
+			</div>
 		</div>
 	);
 };

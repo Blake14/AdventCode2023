@@ -16,6 +16,7 @@ const Navigation = ({ NavHeight }) => {
 			style={{
 				height: NavHeight,
 				width: '100%',
+				fontSize: 22,
 			}}
 		>
 			<Container>
